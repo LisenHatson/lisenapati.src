@@ -1,0 +1,312 @@
+/* Global Variables */
+:root {
+  --background: #eef4f9;
+  --content-bg: #f5f9fc;
+  --border: #ccd6e0;
+  --text: #0a1824;
+  --red: #d4545b;
+  --orange: #b07f40;
+  --yellow: #e5b943;
+  --lime: #28955e;
+  --aqua: #17a4b3;
+  --blue: #0081da;
+  --purple: #6a3ebf;
+  --magenta: #bf3e7b;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --background: #10151c;
+    --content-bg: #0a1824;
+    --border: #2f3a44;
+    --text: #f5f9fc;
+    --red: #e85b4c;
+    --orange: #ff7e26;
+    --yellow: #e5b943;
+    --lime: #81b82d;
+    --aqua: #4fbf9f;
+    --blue: #2b5ea8;
+    --purple: #9e5ec1;
+    --magenta: #d36ba3;
+  }
+}
+
+/* Base Styles */
+body {
+  font-family: sans-serif;
+  background: var(--background);
+  color: var(--text);
+  margin: 0;
+  padding: 15px;
+  transition: background 0.3s ease;
+}
+
+/* Layout Containers */
+.main-container, header, main, footer, .site-nav {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+main {
+  background: var(--content-bg);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+  transition: background 0.3s ease;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+/* Header & Navigation */
+.site-header {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.site-title {
+    flex: 1;
+    margin-bottom: 1rem;
+}
+
+.site-title a, .site-title a:visited{
+  font-size: 1.5rem;
+  color: var(--red);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.site-title a:hover {
+  color: var(--lime);
+  text-decoration: none;
+}
+
+.site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.site-nav ul, .main-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 15px;
+}
+
+.main-menu {
+    flex-grow: 1; /* Allows it to take available space */
+}
+
+.main-menu li {
+    margin-bottom: 0;
+}
+
+.site-nav li a, .main-menu a {
+    display: block;
+    color: var(--blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.site-nav li a:hover, .main-menu a:hover {
+    color: var(--yellow);
+}
+
+.site-nav .menu-social {
+    display: flex;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+/* Remove extra padding on the last social menu item */
+.site-nav .menu-social li:last-child a {
+    padding-right: 0;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 64rem) {
+    .site-nav .menu-social {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 48rem) {
+    .site-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-top: 10px;
+        width: 100%;
+    }
+}
+
+.site-footer .menu-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.site-footer a, .site-footer a:visited{
+    text-decoration: none;
+    color: var(--blue);
+    display: inline-block;
+    padding: 0.5rem;
+}
+
+.site-footer a:hover {
+    color: var(--yellow);
+}
+
+
+
+/* Profile Section */
+.profile-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 100%;
+  padding: 20px;
+}
+
+.profile-text {
+    flex: 1;
+}
+
+.profile-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 5%;
+  box-shadow: 0 2px 10px var(--border);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  max-width: 200px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .profile-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .profile-container img {
+    max-width: 200px;
+  }
+}
+
+/* Typography */
+/* Headings Styling */
+h1 {
+    color: var(--red);
+    text-align: center;
+    font-size: 1.8rem; /* Slightly larger for emphasis */
+    margin-bottom: 1rem; /* Add spacing for better readability */
+}
+
+h2, h3, h4, h5, h6 {
+    color: var(--purple);
+    margin-bottom: 0.8rem;
+}
+
+strong, em {
+  color: var(--lime);
+}
+
+/* Tables */
+.table-container {
+  width: 50%;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+th, td {
+  padding: 7px;
+  border: 1px solid var(--border);
+  transition: background 0.2s ease;
+}
+
+th:hover, td:hover {
+  background: var(--content-bg);
+}
+
+code,pre{
+    font-size:1rem;
+    padding:.5rem;
+    border-radius:7px;
+    overflow:auto
+}
+
+a {
+    color: var(--blue);
+}
+
+a:hover, a:visited:hover {
+    color: var(--yellow);
+}
+
+a:visited {
+    color: var(--purple);
+}
+/* Lists */
+.post-snippet {
+  list-style-type: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-snippet li {
+  padding: 8px 0;
+}
+
+.post-snippet li:last-child {
+  border-bottom: none;
+}
+
+.post-snippet time {
+  color: var(--aqua);
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.post-snippet a {
+  font-weight: bold;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.post-snippet a:hover {
+  color: var(--yellow);
+  text-decoration: underline;
+}
+
+/* Misc */
+svg {
+  display: block;
+}
+

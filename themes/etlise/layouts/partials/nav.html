@@ -1,0 +1,29 @@
+<header class="site-header">
+    <div class="site-title">
+    <a href="{{ .Site.BaseURL }}">
+      {{ .Site.Title }}
+    </a>
+    </div>
+    <div class="site-header-low">
+  <nav class="site-nav">
+
+    <ul class="main-menu">
+      {{ range.Site.Menus.main }}
+      <li>
+        <a href="{{ .URL }}">{{ .Name }}</a>
+      </li>
+      {{ end }}
+    </ul>
+
+    <ul class="menu-social">
+      {{ range.Site.Menus.social -}}
+      <li>
+        <a href="{{ .URL }}" target="_blank" rel="noopener noreferrer">
+          {{ partial "icon.html" (dict "icon" .Pre "title" .Name ) }}
+        </a>
+      </li>
+      {{- end }}
+
+  </nav>
+    </div>
+</header>

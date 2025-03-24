@@ -1,0 +1,23 @@
+{{ partial "header.html" . }}
+
+<section class="profile-container">
+<div class="profile-text">
+{{ .Content }}
+</div>
+<div>
+{{ partial "avatar.html" . }}
+</div>
+</section>
+
+<h1> Particu-late; recently stated </h1>
+
+{{- range where .Site.RegularPages "Section" "in" (slice "recs" "posts") }}
+<article class="post-snippet">
+	<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+		{{ .Date.Format "2006 Jan 02" }}
+	</time> &ndash;
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+</article>
+{{ end }}
+
+{{ partial "footer.html" . }}

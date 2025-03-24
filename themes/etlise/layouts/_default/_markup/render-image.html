@@ -1,0 +1,29 @@
+{{ $src := .Page.Resources.GetMatch (printf "%s" (.Destination | safeURL)) }}
+
+{{ if $src }}
+<figure class="full-width">
+  {{ $data := newScratch }}
+  {{ $maxWidth := 400 }}
+
+  {{ if gt $src.Width $maxWidth }}
+    {{ $data.Set "webp" ($src.Resize (printf "%dx webp q90" $maxWidth)) }}
+    {{ $data.Set "fallback" ($src.Resize (printf "%dx q90" $maxWidth)) }}
+  {{ else }}
+    {{ $data.Set "webp" ($src.Resize (printf "%dx webp q90" $src.Width)) }}
+    {{ $data.Set "fallback" ($src.Resize (printf "%dx q90" $src.Width)) }}
+  {{ end }}
+
+  {{ $webp := $data.Get "webp" }}
+  {{ $fallback := $data.Get "fallback" }}
+
+  <a href="{{ $src.RelPermalink }}">
+    <picture>
+      <source srcset="{{ $webp.RelPermalink }}" type="image/webp">
+      <img src="{{ $fallback.RelPermalink }}" alt="{{ .Text }}" loading="lazy" decoding="async"
+           width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" />
+    </picture>
+  </a>
+
+  {{ with .Title }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+</figure>
+{{ end }}
