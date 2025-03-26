@@ -217,6 +217,11 @@ footer {
   .profile-container img {
     max-width: 200px;
   }
+    img {
+        width: 100%;
+  height: auto;
+  flex-shrink: 0;
+    }
 }
 
 /* Typography */
